@@ -16,17 +16,17 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.index')">
                         {{ __('Tasks') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('todos.index') }}" :active="request()->routeIs('todos.index')">
                         {{ __('Todos') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('matrix.index') }}" :active="request()->routeIs('matrix.index')">
                         {{ __('Price Matrix') }}
                     </x-nav-link>
@@ -35,7 +35,7 @@
                     <x-nav-link href="{{ route('prices.index') }}" :active="request()->routeIs('prices.index')">
                         {{ __('Price Matrix Try II') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                  <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('parts.index') }}" :active="request()->routeIs('parts.index')">
                         {{ __('Parts') }}

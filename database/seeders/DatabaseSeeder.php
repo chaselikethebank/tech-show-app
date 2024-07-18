@@ -14,14 +14,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         // $this->call(PricesTableSeeder::class);
+        // $this->call(PartsTableSeeder::class);
+        // $this->call(TodosSeeder::class);
+        // $this->call(CustomerSeeder::class);
+        // $this->call(VehicleSeeder::class);
+        $this->call(TechSeeder::class);
 
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this->call(PartsTableSeeder::class);
-        $this->call(TodosSeeder::class);
 
     }
 }

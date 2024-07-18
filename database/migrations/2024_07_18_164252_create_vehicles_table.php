@@ -23,6 +23,16 @@ class CreateVehiclesTable extends Migration
             $table->string('vin')->nullable();
             $table->string('license_plate')->nullable();
             $table->text('notes')->nullable();
+            $table->integer('mileage');
+            $table->string('engine');
+            $table->string('transmission');
+            $table->string('drive_type');
+            $table->string('fuel_type');
+            $table->string('cylinders');
+            $table->string('displacement');
+            $table->string('horsepower');
+            $table->string('torque');
+            $table->string('compression_ratio');
             $table->timestamps();
         });
     }

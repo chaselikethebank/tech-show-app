@@ -64,6 +64,11 @@ php artisan migrate
 to check the migrations and what to roll back 
 SELECT * FROM migrations ORDER BY id DESC;
 
+checking enums from a migration 
+SELECT * FROM sqlite_master WHERE type='table' AND name='works';
+ 
+
+
 to check the table columns
 PRAGMA table_info(table_name_here);
 
