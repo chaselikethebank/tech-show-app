@@ -13,12 +13,16 @@
 </div>
 --}}
 
+
 <div class="grid grid-cols-1 gap-3 p-3 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-3 lg:gap-8 lg:p-8">
     <div>
+
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-white">
                 <polygon points="12,2 2,22 22,22" />
             </svg>
+
+
             <h2 class="text-xl font-semibold text-gray-900 ms-3 dark:text-white">
                 <a href="https://laracasts.com">Estimates</a>
             </h2>
@@ -31,55 +35,27 @@
 
 
         <p class="mt-4 leading-relaxed text-gray-500 ptext-sm dark:text-gray-400">
-            Jeryy Sienfeld's 1986 Porche 911 <br />
-
-            <a href="https://laravel.com/docs"
-                class="inline-flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-                Mark as paid
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                    <path fill-rule="evenodd"
-                        d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                        clip-rule="evenodd" />
-                </svg>
-            </a>
-
+            Jeryy Sienfeld's 1986 Porche 911
+            <x-link-with-arrow :route="'parts.create'">
+                Push to work order
+            </x-link-with-arrow>
         </p>
+
 
         <p class="mt-4 leading-relaxed text-gray-500 ptext-sm dark:text-gray-400">
             James Cameron's 2014 Bugatti
-            <br />
-
-            <a href="https://laravel.com/docs"
-                class="inline-flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+            <x-link-with-arrow :route="'parts.create'">
                 Push to work order
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                    <path fill-rule="evenodd"
-                        d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                        clip-rule="evenodd" />
-                </svg>
-            </a>
+            </x-link-with-arrow>
         </p>
-        <div class="my-4">
-            <p class="mt-4 text-sm">
-                <a href="https://laravel.com/docs"
-                    class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                    Create a new estimate
 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                        <path fill-rule="evenodd"
-                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </p>
-        </div>
-
+        <hr class="my-3" />
+        <x-link-with-arrow :route="'parts.create'" class="my-3">
+            Build new estimate
+        </x-link-with-arrow>
     </div>
+
+
 
     <div>
         <div class="flex items-center">
@@ -103,16 +79,9 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
 
 
@@ -125,16 +94,9 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
         <div class="flex items-center mt-4">
             <div class="w-4 h-4 bg-green-400 rounded-full">
@@ -145,16 +107,9 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
         <div class="flex items-center mt-4">
             <div class="w-4 h-4 bg-yellow-400 rounded-full">
@@ -165,16 +120,9 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
         <div class="flex items-center mt-4">
             <div class="w-4 h-4 bg-gray-400 rounded-full">
@@ -185,16 +133,9 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
         <div class="flex items-center mt-4">
             <div class="w-4 h-4 bg-blue-400 rounded-full">
@@ -205,30 +146,16 @@
         </div>
         <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech's Name </a>
         <br />
-        <a href="https://laravel.com/docs"
-            class="inline-flex items-center ml-6 text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-            Create Invoice
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                <path fill-rule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
+        <x-link-with-arrow class="ml-6" :route="'parts.create'">
+            Create invoice
+        </x-link-with-arrow>
 
-        <p class="mt-4 text-sm">
-            <a href="https://laracasts.com"
-                class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                Something else maybe?
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                    <path fill-rule="evenodd"
-                        d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                        clip-rule="evenodd" />
-                </svg>
-            </a>
-        </p>
+        <div class="mt-4 ">
+            <hr class="my-3" />
+            <x-link-with-arrow :route="'parts.create'">
+                Something else?
+            </x-link-with-arrow>
+        </div>
     </div>
 
     <div>
@@ -249,18 +176,9 @@
             </p>
             <p class="text-gray-500 eading-relaxed ptext-sm dark:text-gray-400">
                 Jeryy Sienfeld's 1986 Porche 911 <br />
-                <a href="https://laravel.com/docs"
-                    class="inline-flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+                <x-link-with-arrow class="" :route="'parts.create'">
                     Mark as paid
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                        <path fill-rule="evenodd"
-                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
+                </x-link-with-arrow>
             </p>
         </div>
 
@@ -270,19 +188,17 @@
             </p>
             <p class="text-gray-500 eading-relaxed ptext-sm dark:text-gray-400">
                 James Cameron's 2014 Bugatti <br />
-                <a href="https://laravel.com/docs"
-                    class="inline-flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-                    Mark as paid
+                <x-link-with-arrow :route="'parts.create'">
+                    View this invoice
+                </x-link-with-arrow>
 
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        class="w-5 h-5 ms-1 fill-indigo-500 dark:fill-indigo-200">
-                        <path fill-rule="evenodd"
-                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
             </p>
+            <div class="mt-4 ">
+                <hr class="my-3" />
+                <x-link-with-arrow :route="'parts.create'">
+                    View all paid invoices
+                </x-link-with-arrow>
+            </div>
         </div>
 
 

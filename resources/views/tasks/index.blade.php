@@ -16,9 +16,9 @@
 
     <div class="py-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <x-button class='my-3'>
-                <a href="{{ route('tasks.create') }}">Create New Task</a>
-            </x-button>
+            <x-link-with-arrow :route="'tasks.create'" class="my-3">
+                Create a task
+            </x-link-with-arrow>
             <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 dark:text-gray-300 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50 dark:bg-gray-700">
@@ -60,7 +60,7 @@
                                 <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap dark:text-gray-950">
                                     {{ $task->updated_at }}
                                 </td>
-                                <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
+                                <td class="flex flex-col px-6 py-4 text-sm font-medium whitespace-nowrap">
                                     <a href="{{ route('tasks.show', $task->id) }}"
                                         class="mr-2 text-blue-900 dark:text-blue-600 hover:underline">View</a>
                                     <a href="{{ route('tasks.edit', $task->id) }}"

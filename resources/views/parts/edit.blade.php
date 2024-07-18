@@ -7,6 +7,15 @@
 
     <div class="py-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            @if ($errors->any())
+                <div class="px-4 py-2 mb-4 text-red-600 bg-red-100 border border-red-400 rounded">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('parts.update', $part->id) }}" method="POST">
                 @csrf
                 @method('PUT')

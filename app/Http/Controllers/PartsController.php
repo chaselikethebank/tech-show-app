@@ -32,7 +32,7 @@ class PartsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'manufacturer' => 'required|string|max:255',
-            'part_id' => 'required|string|max:50',
+            'part_id' => 'required|string|max:50|unique:parts,part_id', // Ensure uniqueness
             'wholesale_price' => 'required|numeric',
         ]);
 
@@ -68,8 +68,8 @@ class PartsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'manufacturer' => 'required|string|max:255',
-            'part_number' => 'required|string|max:50',
-            'price' => 'required|numeric',
+            'part_id' => 'required|string|max:50|unique:parts,part_id,' . $id, // Ensure uniqueness, ignoring current id
+            'wholesale_price' => 'required|numeric',
         ]);
 
         $part = Part::findOrFail($id);

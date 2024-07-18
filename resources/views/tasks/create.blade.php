@@ -38,9 +38,10 @@
                         </div>
 
                         <div class="flex justify-end">
-                            <x-button type="submit" class="bg-blue-500 hover:bg-blue-600">
+                            <x-link-with-arrow :route="'tasks.index'" type="submit">
                                 Create Task
-                            </x-button>
+                            </x-link-with-arrow>
+
                         </div>
                     </form>
                 </div>
