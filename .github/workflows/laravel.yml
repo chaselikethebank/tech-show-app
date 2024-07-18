@@ -31,7 +31,7 @@ jobs:
           touch database/database.sqlite
           php artisan migrate --force
 
-      # only run this step if you want to put some data in the database on deployed app, so for demoing to a client, this is a good idea, but for a new production intsance, no seed data
+      # only run this step if you want to put some data in the database on a deployed instance of app. So, for demoing to a client, this is a good idea, but for a new production intsance, no seed data should be needed. Check the seeders/DatabaseSeeder.php file to see if the seed command is commented out or not.
       # - name: Seed Database
       #   run: php artisan db:seed --force
       # make sure the seed command is not commented out in the seeders/DatabaseSeeder.php file
