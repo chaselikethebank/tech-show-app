@@ -32,7 +32,7 @@ class Work extends Model
         'service_type',
         'service_duration',
         'technician_assigned',
-        'technician_id', // Added technician_id to fillable attributes
+        'technician_id',  
         'additional_costs',
         'customer_authorization_timestamp',
         'quality_assurance_check',

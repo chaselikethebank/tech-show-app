@@ -5,6 +5,8 @@ use App\Http\Controllers\PartsController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TodosController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\WorkController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +36,7 @@ Route::middleware([
     Route::resource('prices', PriceController::class);
 
     Route::resource('parts', PartsController::class);
+
+    Route::resource('works', WorkController::class);
+
 });

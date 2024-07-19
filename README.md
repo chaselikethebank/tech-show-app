@@ -67,6 +67,33 @@ SELECT * FROM migrations ORDER BY id DESC;
 checking enums from a migration 
 SELECT * FROM sqlite_master WHERE type='table' AND name='works';
  
+ customer is primary vehicle has a foreign key of customer 
+ SELECT *
+FROM left_table
+LEFT JOIN right_table
+ON left_table.id = right_table.foreign_key;
+
+query for custumer and all their vehicle detials 
+SELECT 
+    c.id AS customer_id,
+    c.name AS customer_name,
+    v.id AS vehicle_id,
+    v.make,
+    v.model,
+    v.year,
+    v.color,
+    v.vin,
+    v.license_plate
+FROM 
+    customers c
+LEFT JOIN 
+    vehicles v ON c.id = v.customer_id;
+
+1|Naval Ravikant|1|Porsche|911|1986|Red|WP0AB0912GS123456|ABC123
+1|Naval Ravikant|2|Porsche|911 Carrera|1986|Silver|WP0AB0911GS654321|DEF456
+1|Naval Ravikant|3|Porsche|911 Turbo|1991|Black|WP0ZZZ96ZMS123456|GHI789
+2|Elon Musk|4|Bugatti|Veyron|2014|Blue|VF9SP2B0XGG000001|JKL012
+3|Marie Forleo|5|Mercedes-Benz|280SL|1969|Black|108.040.12.021198|MNO345
 
 
 to check the table columns
