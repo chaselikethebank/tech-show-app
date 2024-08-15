@@ -12,8 +12,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::all();
-        return view('dashboard', compact('works'));
+        $works = Work::with('tech')->get();
+        return view('dashboard');
     }
 
     /**

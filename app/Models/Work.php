@@ -32,7 +32,7 @@ class Work extends Model
         'service_type',
         'service_duration',
         'technician_assigned',
-        'technician_id',  
+        'technician_id',
         'additional_costs',
         'customer_authorization_timestamp',
         'quality_assurance_check',
@@ -59,6 +59,6 @@ class Work extends Model
 
     public function technician()
     {
-        return $this->belongsTo(Technician::class);
+        return $this->belongsTo(Tech::class, 'technician_id');
     }
 }
