@@ -100,3 +100,9 @@ to check the table columns
 PRAGMA table_info(table_name_here);
 
 
+
+
+php artisan make:component Name
+
+create both the component controller 
+and the view file 
