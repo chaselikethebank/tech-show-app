@@ -12,6 +12,7 @@ class Work extends Model
     protected $fillable = [
         'customer_id',
         'vehicle_id',
+        'technician_id',
         'license_plate',
         'contact_number',
         'email',
@@ -31,8 +32,6 @@ class Work extends Model
         'customer_rating',
         'service_type',
         'service_duration',
-        'technician_assigned',
-        'technician_id',
         'additional_costs',
         'customer_authorization_timestamp',
         'quality_assurance_check',
@@ -57,7 +56,7 @@ class Work extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
-    public function technician()
+    public function tech()
     {
         return $this->belongsTo(Tech::class, 'technician_id');
     }

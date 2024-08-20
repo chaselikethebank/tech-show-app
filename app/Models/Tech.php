@@ -9,7 +9,7 @@ use Laravel\Jetstream\HasApiTokens;
 
 class Tech extends User
 {
-    use HasApiTokens;
+    // use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use HasTeams;
@@ -20,6 +20,7 @@ class Tech extends User
      * @var array
      */
     protected $with = ['works'];
+    protected $table = 'techs';
 
     /**
      * Get all of the works for the tech.
