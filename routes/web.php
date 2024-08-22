@@ -36,18 +36,20 @@ Route::middleware([
 // routes/web.php
 
 // Works Routes
-Route::prefix('works')->group(function () {
-    Route::get('/', [WorkController::class, 'index'])->name('works.index');
-    Route::get('/create', [WorkController::class, 'create'])->name('works.create');
-    Route::post('/', [WorkController::class, 'store'])->name('works.store');
-    Route::post('/assign-technician/{id}', [WorkController::class, 'assignTechnician'])->name('assign.technician');
-});
-
+    Route::prefix('works')->group(function () {
+        Route::get('/', [WorkController::class, 'index'])->name('works.index');
+        Route::get('/create', [WorkController::class, 'create'])->name('works.create');
+        Route::post('/', [WorkController::class, 'store'])->name('works.store');
+        Route::post('/assign-technician/{id}', [WorkController::class, 'assignTechnician'])->name('assign.technician');
+    });
 
 // Estimates
     Route::prefix('estimates')->group(function () {
         Route::get('create', [EstimateController::class, 'create'])->name('estimate.create');
         Route::get('edit/{id}', [EstimateController::class, 'edit'])->name('estimate.edit');
     });
+
+    // Fetch vehicles by customer
+    Route::get('/get-vehicles', [WorkController::class, 'getVehiclesByCustomer']);
 
 });

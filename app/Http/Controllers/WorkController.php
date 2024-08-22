@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Tech;
 use App\Models\Vehicle;
 use App\Models\Work;
@@ -26,7 +27,33 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return view('works.create');
+        $customers = Customer::all();
+        $works = Work::all();
+        $technicians = Tech::all();
+        $vehicles = Vehicle::all();
+        $statuses = config('status.statuses');
+
+        return view('works.create', compact('customers', 'works', 'technicians', 'vehicles', 'statuses'));
+    }
+
+    public function getVehiclesByCustomer(Request $request)
+    {
+        $customerId = $request->input('customer_id');
+
+        // Ensure customer_id is valid
+        if (empty($customerId) || !is_numeric($customerId)) {
+            return response()->json(['error' => 'Invalid customer ID'], 400);
+        }
+
+        // Fetch vehicles
+        try {
+            $vehicles = Vehicle::where('customer_id', $customerId)->get();
+            return response()->json($vehicles);
+        } catch (\Exception $e) {
+            // Log the error and return a server error response
+            \Log::error('Error fetching vehicles: ' . $e->getMessage());
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
     }
 
     /**

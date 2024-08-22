@@ -27,6 +27,9 @@
                             </ul>
                         </div>
                     @endif
+                    @php
+                        dump($vehicles);
+                    @endphp
 
                     <h3 class="text-gray-700 dark:text-gray-300">CREATE A WORKFLOW</h3>
                     <h3 class="text-gray-700 dark:text-gray-300"> Estimate -> Work Order -> Invoice</h3>
@@ -34,29 +37,69 @@
                     <form action="{{ route('works.store') }}" method="POST" class="space-y-4">
                         @csrf
 
-                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                       <div class="
+
+                       {{-- grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 --}}
+                        space-y-6
+                       ">
+
                             <!-- Form Inputs -->
                             <div class="space-y-4">
-                                <div>
-                                    <label for="customer"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer</label>
-                                    <select name="customer" id="customer"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
-                                        <option value="">Customer</option>
-                                        <!-- Add customer options here -->
 
-                                    </select>
+                                <div class="flex justify-between">
+                                    <label for="customer"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                        Customer
+                                    </label>
+
                                 </div>
 
+                                <select name="customer" id="customer"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                    <option value="">Select a customer</option>
+
+                                    @foreach ($customers as $customer)
+                                        <option value="{{ $customer->id }}">{{ $customer->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+
                                 <div>
+
                                     <label for="vehicle"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Vehicle</label>
+
                                     <select name="vehicle" id="vehicle"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
-                                        <option value="">Vehicle</option>
-                                        <!-- Add vehicle options here -->
+                                        <option value="">Select a vehicle</option>
+                                        <option value="new">New</option>
                                     </select>
                                 </div>
+
+                                <script>
+                                    document.getElementById('customer').addEventListener('change', function() {
+                                        var customerId = this.value;
+                                        var vehicleDropdown = document.getElementById('vehicle');
+
+                                        if (customerId) {
+                                            fetch(`/get-vehicles?customer_id=${customerId}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    vehicleDropdown.innerHTML =
+                                                        '<option value="">Select a vehicle</option>';
+                                                    data.forEach(vehicle => {
+                                                        var option = document.createElement('option');
+                                                        option.value = vehicle.id;
+                                                        option.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
+                                                        vehicleDropdown.appendChild(option);
+                                                    });
+                                                });
+                                        } else {
+                                            vehicleDropdown.innerHTML = '<option value="">Select a vehicle</option>';
+                                        }
+                                    });
+                                </script>
 
                                 {{-- <div>
                                     <label for="technician"
@@ -81,8 +124,10 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
                                     <select name="status" id="status"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
-                                        <option value="">Status</option>
-                                        <!-- Add status options here -->
+
+                                        @foreach ($statuses as $status)
+                                            <option value="{{ $status }}">{{ $status }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -132,7 +177,8 @@
                                     <label for="notes"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Notes</label>
                                     <textarea name="notes" id="notes"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" placeholder="What is special about this?"></textarea>
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600"
+                                        placeholder="What is special about this?"></textarea>
                                 </div>
 
                                 {{-- <div>
@@ -162,7 +208,8 @@
 
                                 <div>
                                     <label for="service_duration"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated Labor (Hours)</label>
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated
+                                        Labor (Hours)</label>
                                     <input type="number" name="service_duration" id="service_duration"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
                                 </div>
@@ -249,8 +296,7 @@
                                 </div> --}}
 
                                 <div>
-                                    <label
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Turnaround
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Turnaround
                                         Time</label>
                                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                                         <div>

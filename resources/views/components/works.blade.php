@@ -89,7 +89,7 @@
             @endforeach
             <hr class="my-3" />
             <x-link-with-arrow :route="'works.create'" class="my-3">
-                 Start new work order
+                 Start New Workflow
             </x-link-with-arrow>
         </div>
         <!-- End of the Estimates section -->
