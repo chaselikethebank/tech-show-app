@@ -4,7 +4,7 @@
     <p>No works available.</p>
 @else
     <!-- Container for the grid layout -->
-    <livewire:work-modal/>
+
     <div
         class="grid grid-cols-1 gap-3 p-3 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-3 lg:gap-8 lg:p-8">
 
@@ -89,7 +89,7 @@
             @endforeach
             <hr class="my-3" />
             <x-link-with-arrow :route="'works.create'" class="my-3">
-                Start new Work Order
+                 Start new work order
             </x-link-with-arrow>
         </div>
         <!-- End of the Estimates section -->

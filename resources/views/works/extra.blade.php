@@ -28,9 +28,6 @@
                         </div>
                     @endif
 
-                    <h3 class="text-gray-700 dark:text-gray-300">CREATE A WORKFLOW</h3>
-                    <h3 class="text-gray-700 dark:text-gray-300"> Estimate -> Work Order -> Invoice</h3>
-
                     <form action="{{ route('works.store') }}" method="POST" class="space-y-4">
                         @csrf
 
@@ -38,13 +35,19 @@
                             <!-- Form Inputs -->
                             <div class="space-y-4">
                                 <div>
+                                    <label for="test"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Test</label>
+                                    <input type="text" name="test" id="test" wire:model="test"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                </div>
+
+                                <div>
                                     <label for="customer"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer</label>
                                     <select name="customer" id="customer"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
                                         <option value="">Customer</option>
                                         <!-- Add customer options here -->
-
                                     </select>
                                 </div>
 
@@ -58,7 +61,7 @@
                                     </select>
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="technician"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Technician</label>
                                     <select name="technician" id="technician"
@@ -66,14 +69,13 @@
                                         <option value="">Technician</option>
                                         <!-- Add technician options here -->
                                     </select>
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label for="description"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
                                     <textarea name="description" id="description" rows="3" wire:model='description'
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600"
-                                        placeholder="What is to be done?"></textarea>
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Enter what's wrong with the car here...</textarea>
                                 </div>
 
                                 <div>
@@ -86,7 +88,7 @@
                                     </select>
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="scheduled_at"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Scheduled
                                         At</label>
@@ -108,7 +110,7 @@
                                         At</label>
                                     <input type="datetime-local" name="completed_at" id="completed_at"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label for="estimated_cost"
@@ -118,13 +120,13 @@
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="final_cost"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Final
                                         Cost</label>
                                     <input type="number" name="final_cost" id="final_cost"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
-                                </div> --}}
+                                </div>
                             </div>
 
                             <div class="space-y-4">
@@ -132,19 +134,18 @@
                                     <label for="notes"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Notes</label>
                                     <textarea name="notes" id="notes"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" placeholder="What is special about this?"></textarea>
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Special</textarea>
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="recall_notes"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Recall
                                         Notes</label>
-
                                     <textarea name="recall_notes" id="recall_notes"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Recal notes</textarea>
-                                </div> --}}
+                                </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="customer_feedback"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer
                                         Feedback</label>
@@ -158,24 +159,25 @@
                                         Description</label>
                                     <textarea name="service_description" id="service_description"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Service Description</textarea>
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label for="service_duration"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated Labor (Hours)</label>
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service
+                                        Duration (Hours)</label>
                                     <input type="number" name="service_duration" id="service_duration"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="additional_costs"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Additional
                                         Costs</label>
                                     <textarea name="additional_costs" id="additional_costs"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" placeholder="Additional Costs"></textarea>
-                                </div> --}}
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Additional Costs</textarea>
+                                </div>
 
-                                {{-- <div>
+                                <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Quality
                                         Assurance Check Performed</label>
                                     <div class="flex items-center space-x-4">
@@ -192,40 +194,41 @@
                                             <label for="quality_assurance_check_no" class="ml-2">No</label>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="post_service_follow_up"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Post Service
                                         Follow Up</label>
                                     <input type="datetime-local" name="post_service_follow_up"
                                         id="post_service_follow_up"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label for="service_warranty"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service
                                         Warranty</label>
                                     <textarea name="service_warranty" id="service_warranty"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600 " placeholder="Additional Costs"></textarea>
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Service Warranty</textarea>
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="customer_signature_image"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer
                                         Signature Image</label>
-                                    <input type="file" name="customer_signature_image" id="customer_signature_image"
-                                        class="block w-full mt-1 text-gray-700 border-gray-300 rounded-md shadow-sm dark:border-gray-600 dark:text-gray-300" />
-                                </div> --}}
+                                    <input type="file" name="customer_signature_image"
+                                        id="customer_signature_image"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
+                                </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="service_photos"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service
                                         Photos</label>
                                     <textarea name="service_photos" id="service_photos"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Service Photos links</textarea>
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label for="referral_source"
@@ -235,7 +238,7 @@
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Referral Source</textarea>
                                 </div>
 
-                                {{-- <div>
+                                <div>
                                     <label for="follow_up_actions"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Follow Up
                                         Actions</label>
@@ -246,7 +249,7 @@
                                         <option value="email">Email</option>
                                         <option value="text">Text</option>
                                     </select>
-                                </div> --}}
+                                </div>
 
                                 <div>
                                     <label
@@ -276,21 +279,19 @@
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer
-                                        Approval</label>
+                                        Approval with Signature</label>
                                     <div class="flex items-center space-x-4">
                                         <div>
                                             <input type="radio" value="1" name="customer_approval"
                                                 id="customer_approval_yes"
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="customer_approval_yes"
-                                                class="ml-2 text-gray-700 dark:text-gray-300">Yes</label>
+                                            <label for="customer_approval_yes" class="ml-2">Yes</label>
                                         </div>
                                         <div>
                                             <input type="radio" value="0" name="customer_approval"
                                                 id="customer_approval_no" checked
                                                 class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="customer_approval_no"
-                                                class="ml-2 text-gray-700 dark:text-gray-300">No</label>
+                                            <label for="customer_approval_no" class="ml-2">No</label>
                                         </div>
                                     </div>
                                 </div>
@@ -298,11 +299,11 @@
                         </div>
 
                         <div class="flex justify-end mt-4 space-x-4">
-                            <button type="submit">
-                                <x-link-with-arrow :route="'dashboard'" type="button">
-                                    Create Workflow
-                                </x-link-with-arrow>
-                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-700">Submit</button>
+                            <x-link-with-arrow :route="'tasks.index'" type="button">
+                                Create Estimate
+                            </x-link-with-arrow>
                         </div>
                     </form>
 

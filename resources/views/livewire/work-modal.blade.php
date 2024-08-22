@@ -4,7 +4,7 @@
             <label>Test</label>
             <input type="text" wire:model="test" />
 
-            {{-- <select>
+            <select>
                 <option value="">Customer</option>
             </select>
             <select>
@@ -93,7 +93,7 @@
 
             <label>Customer Approval with Signature</label>
             <input type="radio" value="1" name="customer-approval">Yes</input>
-            <input type="radio" value="0" name="customer-approval" checked>No</input> --}}
+            <input type="radio" value="0" name="customer-approval" checked>No</input>
 
             <button type="submit">Submit</button>
 
@@ -103,5 +103,6 @@
         </form>
 
     </dialog>
-    <button onclick="document.getElementById('{{ $dialogId }}').showModal()">Open Modal</button>
+    <button onclick="document.getElementById('{{ $dialogId }}').showModal()">Start new Work Order test</button>
+
 </div>
