@@ -37,7 +37,8 @@
                     <form action="{{ route('works.store') }}" method="POST" class="space-y-4">
                         @csrf
 
-                       <div class="
+                        <div
+                            class="
 
                        {{-- grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 --}}
                         space-y-6
@@ -73,7 +74,7 @@
                                     <select name="vehicle" id="vehicle"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
                                         <option value="">Select a vehicle</option>
-                                        <option value="new">New</option>
+                                        
                                     </select>
                                 </div>
 
@@ -99,6 +100,13 @@
                                             vehicleDropdown.innerHTML = '<option value="">Select a vehicle</option>';
                                         }
                                     });
+                                    vehicleDropdown.disabled = true;
+                                    fetch(`/get-vehicles?customer_id=${customerId}`)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            vehicleDropdown.disabled = false;
+                                            // Populate dropdown
+                                        });
                                 </script>
 
                                 {{-- <div>
