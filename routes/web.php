@@ -7,6 +7,8 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TodosController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\CustomerController;
+
 
 Route::middleware([
     'auth:sanctum',
@@ -51,5 +53,10 @@ Route::middleware([
 
     // Fetch vehicles by customer
     Route::get('/get-vehicles', [WorkController::class, 'getVehiclesByCustomer']);
+
+
+    //customers
+    Route::resource('customers', CustomerController::class);
+
 
 });

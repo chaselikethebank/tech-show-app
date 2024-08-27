@@ -79,23 +79,12 @@
                     <!-- Timestamp Information -->
                     <div class="mb-4 text-gray-500 dark:text-gray-400">
                         <p class="font-medium">Created At:</p>
-                        <p>
-                            @if ($customer->created_at)
-                                {{ $customer->created->format('M d, Y h:i A') }}
-                            @else
-                                Not Available
-                            @endif
-                        </p>
-
-                        <p class="mt-2 font-medium">Updated At:</p>
-                        <p>
-                            @if ($customer->updated_at)
-                                {{ $customer->updated_at->format('M d, Y h:i A') }}
-                            @else
-                                Not Available
-                            @endif
-                        </p>
-                    </div>
+                        <p>{{ $customer->created_at }}</p>
+                        @if ($customer->updated_at)
+                            <p class="mt-2 font-medium">Updated At:</p>
+                            <p>{{ $customer->updated_at }}</p>
+                        @endif
+                    </div>  
 
                     <!-- Action Links -->
                     <div class="flex mt-4">
