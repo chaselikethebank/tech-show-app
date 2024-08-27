@@ -5,8 +5,7 @@
 @else
     <!-- Container for the grid layout -->
 
-    <div
-        class="grid grid-cols-1 gap-3 p-3 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-3 lg:gap-8 lg:p-8">
+    <div class="grid grid-cols-1 gap-3 p-3 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-3 lg:gap-8 lg:p-8">
 
         <!-- Start of the Estimates section -->
         <div>
@@ -43,32 +42,34 @@
                     </p>
                 </div>
                 <p class="ml-6 text-gray-500 ml- text-based dark:text-gray-400">
-                {{$work->customer->phone ?? 'Unknown Phone'}}<br/>
-                {{$work->customer->email ?? 'Unknown Email'}}<br/>
+                    {{-- {{$work->customer->phone ?? 'Unknown Phone'}}<br/>
+                {{$work->customer->email ?? 'Unknown Email'}}<br/> --}}
                     {{ $work->vehicle->year ?? 'Unknown Year' }}
                     {{ $work->vehicle->model ?? 'Unknown Vehicle' }}
-                    {{ $work->vehicle->make ?? 'Unknown Make' }}<br/>
-                    LP#: {{ $work->vehicle->license_plate ?? 'Unknown License Plate' }}<br/>
-                    {{ $work->description }}<br/>
-                    {{ $work->scheduled_at }}<br/>
-                    Tech: {{ $work->tech->name ?? 'Unknown Technician' }}<br/>
-                <div
-                    class="p-2 {{ match ($work->status) {
-                        'estimate' => 'bg-gray-500',
-                        'sent_estimate' => 'bg-blue-500',
-                        'unassigned' => 'bg-gray-400',
-                        'assigned' => 'bg-yellow-500',
-                        'inProgress' => 'bg-yellow-400',
-                        'pending' => 'bg-orange-500',
-                        'done' => 'bg-green-500',
-                        'edit_request' => 'bg-gray-600',
-                        'sublet' => 'bg-blue-400',
-                        'recall' => 'bg-red-500',
-                        default => 'bg-gray-300',
-                    } }}">
-                    {{ StatusHelper::getStatusLabel($work->status) }}
-                </div>
+                    {{ $work->vehicle->make ?? 'Unknown Make' }}<br />
+                    <a href="{{ route('works.show', $work) }}">
+                        <p class="ml-6 text-xs font-semibold text-gray-500 ml- text-based dark:text-gray-300">
+                            {{ Str::limit($work->description, 25) }}
+                        </p>
+                    </a>
 
+                <div
+                    class=" mt-3 {{ match ($work->status) {
+                        'estimate' => 'text-gray-500',
+                        'sent_estimate' => 'text-blue-500',
+                        'unassigned' => 'text-gray-400',
+                        'assigned' => 'text-yellow-500',
+                        'inProgress' => 'text-yellow-400',
+                        'pending' => 'text-orange-500',
+                        'done' => 'text-green-500',
+                        'edit_request' => 'text-gray-600',
+                        'sublet' => 'text-blue-400',
+                        'recall' => 'text-red-500',
+                        default => 'text-gray-300',
+                    } }} text-right">
+                    <em>
+                    {{ StatusHelper::getStatusLabel($work->status) }}</em>
+                </div>
 
                 <!-- Conditional actions based on $work->status -->
 
@@ -89,7 +90,7 @@
             @endforeach
             <hr class="my-3" />
             <x-link-with-arrow :route="'works.create'" class="my-3">
-                 Start New Workflow
+                Start New Workflow
             </x-link-with-arrow>
         </div>
         <!-- End of the Estimates section -->
@@ -170,4 +171,3 @@
 
     </div>
 @endif
-

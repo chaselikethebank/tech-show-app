@@ -62,35 +62,13 @@
 
                             </p>
                             <p>
-                             <a href="tel:{{ $customer->phone }}" class="ml-2">{{ $customer->phone }}</a>
+                             <a href="tel:{{ $customer->phone }}" class="">{{ $customer->phone }}</a>
                             </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Address and Contact Information -->
-                    <div class="mb-4 text-gray-600 dark:text-gray-400">
-                        <p class="font-medium">Address:</p>
-                        <p>{{ $customer->address }}</p>
-                        <p>{{ $customer->city }}, {{ $customer->state }} {{ $customer->zip }}</p>
-                        <p>{{ $customer->country }}</p>
 
-                        <p class="mt-2 font-medium">Company:</p>
-                        <p>{{ $customer->company }}</p>
-
-                        <p class="mt-2 font-medium">Notes:</p>
-                        <p>{{ $customer->notes }}</p>
-                    </div>
-
-                    <!-- Timestamp Information -->
-                    <div class="mb-4 text-gray-500 dark:text-gray-400">
-                        <p class="font-medium">Created At:</p>
-                        <p>{{ $customer->created_at }}</p>
-                        @if ($customer->updated_at)
-                            <p class="mt-2 font-medium">Updated At:</p>
-                            <p>{{ $customer->updated_at }}</p>
-                        @endif
-                    </div>
 
                     <!-- Action Links -->
                     <div class="flex mt-4">
