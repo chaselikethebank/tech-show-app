@@ -56,9 +56,15 @@
                         </div>
                         <div class="ml-4">
                             <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $customer->name }}</h2>
-                            <p class="text-blue-500 dark:text-blue-400">
+                            <div class="text-blue-500 dark:text-blue-400">
+                            <p >
                                 <a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a>
+
                             </p>
+                            <p>
+                             <a href="tel:{{ $customer->phone }}" class="ml-2">{{ $customer->phone }}</a>
+                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -69,8 +75,8 @@
                         <p>{{ $customer->city }}, {{ $customer->state }} {{ $customer->zip }}</p>
                         <p>{{ $customer->country }}</p>
 
-                        <p class="mt-2 font-medium">Phone:</p>
-                        <p>{{ $customer->phone }}</p>
+                        <p class="mt-2 font-medium">Company:</p>
+                        <p>{{ $customer->company }}</p>
 
                         <p class="mt-2 font-medium">Notes:</p>
                         <p>{{ $customer->notes }}</p>
@@ -84,7 +90,7 @@
                             <p class="mt-2 font-medium">Updated At:</p>
                             <p>{{ $customer->updated_at }}</p>
                         @endif
-                    </div>  
+                    </div>
 
                     <!-- Action Links -->
                     <div class="flex mt-4">
