@@ -8,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TodosController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TechniciansController;
 
 
 Route::middleware([
@@ -43,13 +44,10 @@ Route::middleware([
         Route::get('/create', [WorkController::class, 'create'])->name('works.create');
         Route::post('/', [WorkController::class, 'store'])->name('works.store');
         Route::post('/assign-technician/{id}', [WorkController::class, 'assignTechnician'])->name('assign.technician');
+        Route::resource('works', WorkController::class);
+
     });
 
-// Estimates
-    Route::prefix('estimates')->group(function () {
-        Route::get('create', [EstimateController::class, 'create'])->name('estimate.create');
-        Route::get('edit/{id}', [EstimateController::class, 'edit'])->name('estimate.edit');
-    });
 
     // Fetch vehicles by customer
     Route::get('/get-vehicles', [WorkController::class, 'getVehiclesByCustomer']);
@@ -58,5 +56,7 @@ Route::middleware([
     //customers
     Route::resource('customers', CustomerController::class);
 
+    //Technicians
+    Route::resource('technicians', TechniciansController::class);
 
 });
