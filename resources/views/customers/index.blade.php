@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <div class="py-3">
+    <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
             <x-link-with-arrow :route="'customers.create'" class="my-3">
@@ -57,31 +57,32 @@
                         <div class="ml-4">
                             <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $customer->name }}</h2>
                             <div class="text-blue-500 dark:text-blue-400">
-                            <p >
-                                <a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a>
+                                <p>
+                                    <a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a>
 
-                            </p>
-                            <p>
-                             <a href="tel:{{ $customer->phone }}" class="">{{ $customer->phone }}</a>
-                            </p>
+                                </p>
+                                <p>
+                                    <a href="tel:{{ $customer->phone }}" class="">{{ $customer->phone }}</a>
+                                </p>
                             </div>
                         </div>
                     </div>
 
-
-
                     <!-- Action Links -->
-                    <div class="flex mt-4">
+                    <div class="flex mt-4 text-indigo-500 no-underline">
                         <a href="{{ route('customers.show', $customer) }}"
-                            class="mr-4 text-blue-500 hover:underline">View Details</a>
-                        <a href="{{ route('customers.edit', $customer) }}"
-                            class="text-green-500 hover:underline">Edit</a>
-                    </div>
-                </div>
-            @endforeach
-
-            <a href="{{ route('customers.create') }}" class="text-blue-500 hover:underline">Create New Customer</a>
+                            class="mr-4 text-blue-500  flex items-center">
+                            <span>View Details</span>
+                            <x-arrow />
+                        </a>
+                        <a href="{{ route('customers.edit', $customer) }}" class="text-green-300 ">
+                            <div class="flex">
+                                Edit <x-arrow /></div>
+                    </div></a>
+                 
         </div>
+        @endforeach
+    </div>
     </div>
 
 </x-app-layout>

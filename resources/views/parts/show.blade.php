@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-3">
+    <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="p-4 overflow-hidden bg-white shadow-xl dark:bg-gray-800 dark:text-gray-300 sm:rounded-lg">
                 <h3 class="text-lg font-medium text-gray-900 dark:text-gray-300">Part ID: {{ $part->part_id }}</h3>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="mt-6">
-               
+
 
                 <a href="{{ route('parts.edit', $part->id) }}"
                     class="inline-flex items-center text-sm font-semibold text-green-700 dark:text-green-300">

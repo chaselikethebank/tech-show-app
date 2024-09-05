@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <div class="py-3">
+    <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <x-link-with-arrow :route="'tasks.create'" class="my-3">
                 Create a task
