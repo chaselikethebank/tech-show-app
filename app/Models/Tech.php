@@ -20,6 +20,7 @@ class Tech extends User
      * @var array
      */
     protected $with = ['works'];
+    protected $fillable = ['name', 'email', 'phone', 'notes'];
     protected $table = 'techs';
 
     /**

@@ -6,10 +6,9 @@
         </h2>
     </x-slot>
 
-
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
+    <div class=" ">
+        <div class=" px-3 ">
+            <div class="overflow-hidden   shadow-xl   sm:rounded-lg">
                 <div class="p-6">
 
                     @if (session('success'))
@@ -27,12 +26,12 @@
                             </ul>
                         </div>
                     @endif
-                    @php
-                        dump($vehicles);
-                    @endphp
+                    {{-- @php
+                          dump($vehicles);
+                    @endphp --}}
 
-                    <h3 class="text-gray-700 dark:text-gray-300">CREATE A WORKFLOW</h3>
-                    <h3 class="text-gray-700 dark:text-gray-300"> Estimate -> Work Order -> Invoice</h3>
+                    <h3 class="text-gray-700 dark:text-gray-300">Create a "WORKFLOW"</h3>
+                    <h3 class="text-gray-700 dark:text-gray-300"> Estimate -> Work Order -> Invoice ? What's the flow?! </h3>
 
                     <form action="{{ route('works.store') }}" method="POST" class="space-y-4">
                         @csrf
@@ -43,7 +42,6 @@
                        {{-- grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 --}}
                         space-y-6
                        ">
-
                             <!-- Form Inputs -->
                             <div class="space-y-4">
 
@@ -52,11 +50,9 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                         Customer
                                     </label>
-
                                 </div>
-
                                 <select name="customer" id="customer"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                    class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                     <option value="">Select a customer</option>
 
                                     @foreach ($customers as $customer)
@@ -64,20 +60,15 @@
                                         </option>
                                     @endforeach
                                 </select>
-
-
                                 <div>
-
                                     <label for="vehicle"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Vehicle</label>
 
                                     <select name="vehicle" id="vehicle"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                         <option value="">Select a vehicle</option>
-                                        
                                     </select>
                                 </div>
-
                                 <script>
                                     document.getElementById('customer').addEventListener('change', function() {
                                         var customerId = this.value;
@@ -123,7 +114,7 @@
                                     <label for="description"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
                                     <textarea name="description" id="description" rows="3" wire:model='description'
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600"
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                                         placeholder="What is to be done?"></textarea>
                                 </div>
 
@@ -131,8 +122,7 @@
                                     <label for="status"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
                                     <select name="status" id="status"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
-
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                         @foreach ($statuses as $status)
                                             <option value="{{ $status }}">{{ $status }}</option>
                                         @endforeach
@@ -168,7 +158,7 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated
                                         Cost</label>
                                     <input type="number" name="estimated_cost" id="estimated_cost"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
                                 </div>
 
                                 {{-- <div>
@@ -185,7 +175,7 @@
                                     <label for="notes"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Notes</label>
                                     <textarea name="notes" id="notes"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600"
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                                         placeholder="What is special about this?"></textarea>
                                 </div>
 
@@ -219,7 +209,7 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated
                                         Labor (Hours)</label>
                                     <input type="number" name="service_duration" id="service_duration"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600" />
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
                                 </div>
 
                                 {{-- <div>
@@ -263,7 +253,7 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service
                                         Warranty</label>
                                     <textarea name="service_warranty" id="service_warranty"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600 " placeholder="Additional Costs"></textarea>
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white" placeholder="Additional Costs"></textarea>
                                 </div>
 
                                 {{-- <div>
@@ -287,7 +277,7 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Referral
                                         Source</label>
                                     <textarea name="referral_source" id="referral_source"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">Referral Source</textarea>
+                                        class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">Referral Source</textarea>
                                 </div>
 
                                 {{-- <div>
@@ -311,19 +301,19 @@
                                             <label for="turnaround_weeks"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Weeks</label>
                                             <input type="number" name="turnaround_weeks" id="turnaround_weeks"
-                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                                class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                         </div>
                                         <div>
                                             <label for="turnaround_days"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Days</label>
                                             <input type="number" name="turnaround_days" id="turnaround_days"
-                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                                class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                         </div>
                                         <div>
                                             <label for="turnaround_hours"
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Hours</label>
                                             <input type="number" name="turnaround_hours" id="turnaround_hours"
-                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-600">
+                                                class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">
                                         </div>
                                     </div>
                                 </div>

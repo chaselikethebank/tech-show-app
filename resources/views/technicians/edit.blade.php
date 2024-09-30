@@ -8,6 +8,13 @@
     <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
+            <div class="flex mt-4 text-indigo-500 no-underline">
+                <a href="{{ route('technicians.index', $technician) }}" class="mr-4 text-blue-500  flex items-center">
+                    <span>Back to Technicians</span>
+                    <x-arrow />
+                </a>
+            </div>
+
             @if ($errors->any())
                 <div class="mb-4">
                     <ul class="text-red-600">
@@ -18,11 +25,11 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('technicians.update', $technician) }}">
+            <form method="POST" action="{{ route('technicians.update', $technician) }}" class="space-y-6">
                 @csrf
                 @method('PUT')
 
-                <div class="mb-4">
+                <div class="mb-4 ">
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
                     <input id="name" type="text" name="name" value="{{ old('name', $technician->name) }}"
                         class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white" required>
@@ -48,9 +55,16 @@
                 </div>
 
                 <div class="flex justify-end">
+
                     <button type="submit"
-                        class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-                        Update Technician
+                        class="px-4 py-2  text-green-300">
+                        <div class="flex  ">
+                        Submit Update  <x-arrow /></div>
+                    </button>
+
+                     <button type="submit"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium  text-green-300">
+                       {{ __('Update Technician') }} <x-arrow  />
                     </button>
                 </div>
             </form>

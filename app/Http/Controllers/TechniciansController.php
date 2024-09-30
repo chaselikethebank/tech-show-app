@@ -34,14 +34,19 @@ class TechniciansController extends Controller
 
     public function update(Request $request, Tech $technician)
     {
-        $data = $request->validate([
+
+        // dd($request->all());
+
+
+        $validateData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:techs,email,' . $technician->id,
             'phone' => 'nullable|string|max:20',
             'notes' => 'nullable|string',
         ]);
 
-        $technician->update($data);
+
+        $technician->update($validateData);
 
         return redirect()->route('technicians.index')->with('success', 'Technician updated successfully.');
     }

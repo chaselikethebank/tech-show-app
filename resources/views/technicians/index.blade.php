@@ -27,7 +27,7 @@
                         <div class="relative flex-shrink-0 w-16 h-16">
                             <!-- Profile Image Placeholder -->
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <div
+                                {{-- <div
                                     class="w-16 h-16 rounded-full {{ match ($technician->status) {
                                         'estimate' => 'bg-gray-500',
                                         'sent_estimate' => 'bg-blue-500',
@@ -41,9 +41,18 @@
                                         'recall' => 'bg-red-500',
                                         default => 'bg-gray-300',
                                     } }}">
-                                </div>
+                                </div> --}}
+                            </div>
+                            <!-- Profile Image Placeholder -->
+                            <div class="w-12 h-12 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-700  ">
+                                <!-- Placeholder for a profile image or initial -->
+                                <svg class="w-12 h-12 text-orange-500 dark:text-green-300"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="currentColor" />
+                                </svg>
                             </div>
                         </div>
+
                         <div class="ml-4">
                             <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $technician->name }}
                             </h2>
@@ -58,12 +67,17 @@
                         </div>
                     </div>
 
-                    <div class="flex mt-4">
+                    <!-- Action Links -->
+                    <div class="flex mt-4 text-indigo-500 no-underline">
                         <a href="{{ route('technicians.show', $technician) }}"
-                            class="mr-4 text-blue-500 hover:underline">View Details</a>
-                        <a href="{{ route('technicians.edit', $technician) }}"
-                            class="text-green-500 hover:underline">Edit</a>
-                    </div>
+                            class="mr-4 text-blue-500  flex items-center">
+                            <span>View Details</span>
+                            <x-arrow />
+                        </a>
+                        <a href="{{ route('technicians.edit', $technician) }}" class="text-green-300 ">
+                            <div class="flex">
+                                Edit <x-arrow /></div>
+                    </div></a>
                 </div>
             @endforeach
 

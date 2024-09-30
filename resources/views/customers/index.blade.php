@@ -25,12 +25,14 @@
                 <div
                     class="p-6 mb-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <!-- Header Section -->
-                    <div class="flex items-center mb-4">
-                        <div class="relative flex-shrink-0 w-16 h-16">
+                    <div class="flex items-center mb-4  ">
+                        <div class="relative flex-shrink-0 w-16 h-16   ">
                             <!-- Status Indicator Circle -->
-                            <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="absolute inset-0 flex items-center justify-center mt-4">
                                 <div
-                                    class="w-16 h-16 rounded-full {{ match ($customer->status) {
+                                    class="w-8 h-8 rounded-full mt-4 "
+
+                                    {{-- {{ match ($customer->status) {
                                         'estimate' => 'bg-gray-500',
                                         'sent_estimate' => 'bg-blue-500',
                                         'unassigned' => 'bg-gray-400',
@@ -42,13 +44,14 @@
                                         'sublet' => 'bg-blue-400',
                                         'recall' => 'bg-red-500',
                                         default => 'bg-gray-300',
-                                    } }}">
+                                    } }}" --}}
+                                    >
                                 </div>
                             </div>
                             <!-- Profile Image Placeholder -->
-                            <div class="w-12 h-12 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-700">
+                            <div class="w-12 h-12 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-700  ">
                                 <!-- Placeholder for a profile image or initial -->
-                                <svg class="w-12 h-12 text-gray-500 dark:text-gray-400"
+                                <svg class="w-12 h-12 text-orange-500 dark:text-green-300"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="10" fill="currentColor" />
                                 </svg>
@@ -78,11 +81,12 @@
                         <a href="{{ route('customers.edit', $customer) }}" class="text-green-300 ">
                             <div class="flex">
                                 Edit <x-arrow /></div>
-                    </div></a>
-                 
+                        </a>
+                    </div>
+
+                </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
     </div>
 
 </x-app-layout>
