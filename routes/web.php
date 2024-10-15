@@ -59,4 +59,7 @@ Route::middleware([
     //Technicians
     Route::resource('technicians', TechniciansController::class);
 
+    Route::resource('vehicles', VehicleController::class);
+
+
 });
