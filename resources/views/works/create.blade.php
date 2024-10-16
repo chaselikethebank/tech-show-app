@@ -68,36 +68,7 @@
                                         <option value="">Select a vehicle</option>
                                     </select>
                                 </div>
-                                <script>
-                                    document.getElementById('customer').addEventListener('change', function() {
-                                        var customerId = this.value;
-                                        var vehicleDropdown = document.getElementById('vehicle');
 
-                                        if (customerId) {
-                                            fetch(`/get-vehicles?customer_id=${customerId}`)
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    vehicleDropdown.innerHTML =
-                                                        '<option value="">Select a vehicle</option>';
-                                                    data.forEach(vehicle => {
-                                                        var option = document.createElement('option');
-                                                        option.value = vehicle.id;
-                                                        option.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
-                                                        vehicleDropdown.appendChild(option);
-                                                    });
-                                                });
-                                        } else {
-                                            vehicleDropdown.innerHTML = '<option value="">Select a vehicle</option>';
-                                        }
-                                    });
-                                    vehicleDropdown.disabled = true;
-                                    fetch(`/get-vehicles?customer_id=${customerId}`)
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            vehicleDropdown.disabled = false;
-                                            // Populate dropdown
-                                        });
-                                </script>
                                 <div>
                                     <label for="status"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
@@ -140,7 +111,8 @@
                         Create A New Vehicle {{ $customer->name }}
                     </h3>
                     <div class="mt-2">
-                        <form id="newVehicleForm">
+                        <form id="newVehicleForm" method="post" action="{{ route('works.store.vehicle') }}">
+                            @csrf
                             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <div>
                                     <label for="make" class="block text-sm font-medium text-gray-700">Make</label>
@@ -148,8 +120,7 @@
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                 </div>
                                 <div>
-                                    <label for="model"
-                                        class="block text-sm font-medium text-gray-700">Model</label>
+                                    <label for="model" class="block text-sm font-medium text-gray-700">Model</label>
                                     <input type="text" name="model" id="model"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                 </div>
@@ -158,6 +129,7 @@
                                     <input type="number" name="year" id="year"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -175,82 +147,102 @@
         </div>
     </div>
     <script>
-        const customerSelect = document.getElementById('customer');
-        const vehicleSelect = document.getElementById('vehicle');
-        const openVehicleModalBtn = document.getElementById('openVehicleModal');
-        const closeVehicleModalBtn = document.getElementById('closeVehicleModal');
-        const saveVehicleBtn = document.getElementById('saveVehicle');
-        const vehicleModal = document.getElementById('vehicleModal');
-        const newVehicleForm = document.getElementById('newVehicleForm');
+        document.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOM fully loaded and parsed');
 
-        // Open modal
-        openVehicleModalBtn.addEventListener('click', () => {
-            vehicleModal.classList.remove('hidden');
-        });
+            const customerSelect = document.getElementById('customer');
+            const vehicleSelect = document.getElementById('vehicle');
+            const openVehicleModalBtn = document.getElementById('openVehicleModal');
+            const closeVehicleModalBtn = document.getElementById('closeVehicleModal');
+            const saveVehicleBtn = document.getElementById('saveVehicle');
+            const vehicleModal = document.getElementById('vehicleModal');
+            const newVehicleForm = document.getElementById('newVehicleForm');
 
-        // Close modal
-        closeVehicleModalBtn.addEventListener('click', () => {
-            vehicleModal.classList.add('hidden');
-        });
+            // Open modal
+            openVehicleModalBtn.addEventListener('click', () => {
+                vehicleModal.classList.remove('hidden');
+            });
 
-        // Save new vehicle
-        saveVehicleBtn.addEventListener('click', () => {
-            const formData = new FormData(newVehicleForm);
-            formData.append('customer_id', customerSelect.value);
+            // Close modal
+            closeVehicleModalBtn.addEventListener('click', () => {
+                vehicleModal.classList.add('hidden');
+            });
 
-            fetch('/vehicles', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                            'content'),
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Add new vehicle to the dropdown
-                        const option = document.createElement('option');
-                        option.value = data.vehicle.id;
-                        option.textContent =
-                            `${data.vehicle.make} ${data.vehicle.model} (${data.vehicle.year})`;
-                        vehicleSelect.appendChild(option);
-                        vehicleSelect.value = data.vehicle.id;
+            // Save new vehicle
+            saveVehicleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const formData = new FormData(newVehicleForm);
+                formData.append('customer_id', customerSelect.value);
 
-                        // Close modal and reset form
-                        vehicleModal.classList.add('hidden');
-                        newVehicleForm.reset();
-                    } else {
-                        alert('Error creating vehicle. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again.');
-                });
-        });
+                try {
+                    fetch('/vehicles', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                    .getAttribute('content'),
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(vehicleData => {
+                            if (vehicleData.success) {
+                                // Add new vehicle to the dropdown
+                                const option = document.createElement('option');
+                                option.value = vehicleData.vehicle.id;
+                                option.textContent =
+                                    `${vehicleData.vehicle.make} ${vehicleData.vehicle.model} (${vehicleData.vehicle.year})`;
+                                vehicleSelect.appendChild(option);
+                                vehicleSelect.value = vehicleData.vehicle.id;
 
-        // Existing customer change event listener
-        customerSelect.addEventListener('change', function() {
-            var customerId = this.value;
-            if (customerId) {
-                fetch(`/get-vehicles?customer_id=${customerId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
-                        data.forEach(vehicle => {
-                            var option = document.createElement('option');
-                            option.value = vehicle.id;
-                            option.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
-                            vehicleSelect.appendChild(option);
+                                // Close modal and reset form
+                                vehicleModal.classList.add('hidden');
+                                newVehicleForm.reset();
+                            } else {
+                                alert('Error creating vehicle: ' + vehicleData.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
                         });
-                        vehicleSelect.disabled = false;
-                    });
-            } else {
-                vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
-                vehicleSelect.disabled = true;
-            }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+
+            // Existing customer change event listener
+            customerSelect.addEventListener('change', function() {
+                var customerId = this.value;
+                document.getElementById('modal-title').innerText =
+                    `Create A New Vehicle ${this.options[this.selectedIndex].text}`;
+
+                if (customerId) {
+                    fetch(`/get-vehicles?customer_id=${customerId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
+                            data.forEach(vehicle => {
+                                var option = document.createElement('option');
+                                option.value = vehicle.id;
+                                option.textContent =
+                                    `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
+                                vehicleSelect.appendChild(option);
+                            });
+                            vehicleSelect.disabled = false;
+                        });
+                } else {
+                    vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
+                    vehicleSelect.disabled = true;
+                }
+            });
+
+            // Initialize vehicleSelect as disabled
+            vehicleSelect.disabled = true;
         });
     </script>
 </x-app-layout>

@@ -9,6 +9,8 @@ use App\Http\Controllers\TodosController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TechniciansController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\WorksController;
 
 
 Route::middleware([
@@ -27,39 +29,40 @@ Route::middleware([
         Route::get('{id}', [TodosController::class, 'show'])->name('todos.show');
         Route::patch('{todo}/start-timer', [TodosController::class, 'startTimer'])->name('todos.startTimer');
         Route::patch('{todo}/stop-timer', [TodosController::class, 'stopTimer'])->name('todos.stopTimer');
-    }); // Tasks
+    });
+
+    // Tasks
     Route::resource('tasks', TaskController::class)->except(['update']);
     Route::put('tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 
-// Matrix, Prices, Parts
+    // Matrix, Prices, Parts
     Route::resource('matrix', MatrixController::class);
     Route::resource('prices', PriceController::class);
     Route::resource('parts', PartsController::class);
 
-// routes/web.php
-
-// Works Routes
+    // Works Routes
     Route::prefix('works')->group(function () {
         Route::get('/', [WorkController::class, 'index'])->name('works.index');
         Route::get('/create', [WorkController::class, 'create'])->name('works.create');
         Route::post('/', [WorkController::class, 'store'])->name('works.store');
         Route::post('/assign-technician/{id}', [WorkController::class, 'assignTechnician'])->name('assign.technician');
-        Route::resource('works', WorkController::class);
-
+        Route::post('/create', [WorkController::class, 'storeVehicle'])->name('works.store.vehicle');
+        Route::get('{id}', [WorkController::class, 'show'])->name('works.show');
+        Route::get('{id}/edit', [WorkController::class, 'edit'])->name('works.edit');
+        Route::put('{id}', [WorkController::class, 'update'])->name('works.update');
+        Route::delete('{id}', [WorkController::class, 'destroy'])->name('works.destroy');
     });
-
 
     // Fetch vehicles by customer
     Route::get('/get-vehicles', [WorkController::class, 'getVehiclesByCustomer']);
 
-
-    //customers
+    // Customers
     Route::resource('customers', CustomerController::class);
 
-    //Technicians
+    // Technicians
     Route::resource('technicians', TechniciansController::class);
 
-    Route::resource('vehicles', VehicleController::class);
-
+    // Vehicles
+    Route::post('/vehicles', [VehicleController::class, 'store']);
 
 });
