@@ -160,7 +160,7 @@ class WorkController extends Controller {
     public function storeVehicle(Request $request) {
 
         dd($request->all());
-        
+
         $request->validate([
             'make' => 'required',
             'model' => 'required',
@@ -168,13 +168,13 @@ class WorkController extends Controller {
         ]);
 
         try {
-            dd($request->all());
+            // dd($request->all());
 
             $createdVehicle = Vehicle::create($request->all());
             Log::info($createdVehicle->toArray());
             return response()->json(['success' => true, 'vehicle' => $createdVehicle]);
         } catch (\Exception $e) {
-            Log::error('Error creating vehicle: ' . $e->getMessage());
+            Log::error('Important Alert: ' . $e->getMessage());
             dd($e);
             return response()->json(['error' => 'Internal Server Error'], 500);
         }

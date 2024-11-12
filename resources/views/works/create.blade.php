@@ -5,8 +5,8 @@
             {{ __('Works') }}
         </h2>
     </x-slot>
-    <div class=" ">
-        <div class=" px-3 ">
+    <div class="p-3">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden   shadow-xl   sm:rounded-lg">
                 <div class="p-6">
                     @if (session('success'))
@@ -26,8 +26,6 @@
                     {{-- @php
                           dump($vehicles);
                     @endphp --}}
-                    <h3 class="text-gray-700 dark:text-gray-300">Create a "WORKFLOW"</h3>
-                    <h3 class="text-gray-700 dark:text-gray-300"> Estimate -> Work Order -> Invoice ? What's the flow?!
                     </h3>
                     <form action="{{ route('works.store') }}" method="POST" class="space-y-4">
                         @csrf
@@ -59,7 +57,8 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Select
                                         Vehicle
                                         <button type="button" id="openVehicleModal"
-                                            class="px-2 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            class="px-2 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                            {{ !$customers->isEmpty() ? '' : 'hidden' }}>
                                             + Create New Vehicle +
                                         </button>
                                     </label>
@@ -147,104 +146,103 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            console.log('DOM fully loaded and parsed');
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
 
-            const customerSelect = document.getElementById('customer');
-            const vehicleSelect = document.getElementById('vehicle');
-            const openVehicleModalBtn = document.getElementById('openVehicleModal');
-            const closeVehicleModalBtn = document.getElementById('closeVehicleModal');
-            const saveVehicleBtn = document.getElementById('saveVehicle');
-            const vehicleModal = document.getElementById('vehicleModal');
-            const newVehicleForm = document.getElementById('newVehicleForm');
+        const customerSelect = document.getElementById('customer');
+        const vehicleSelect = document.getElementById('vehicle');
+        const openVehicleModalBtn = document.getElementById('openVehicleModal');
+        const closeVehicleModalBtn = document.getElementById('closeVehicleModal');
+        const saveVehicleBtn = document.getElementById('saveVehicle');
+        const vehicleModal = document.getElementById('vehicleModal');
+        const newVehicleForm = document.getElementById('newVehicleForm');
 
-            // Open modal
-            openVehicleModalBtn.addEventListener('click', () => {
-                vehicleModal.classList.remove('hidden');
-            });
-
-            // Close modal
-            closeVehicleModalBtn.addEventListener('click', () => {
-                vehicleModal.classList.add('hidden');
-            });
-
-            // Save new vehicle
-            saveVehicleBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const formData = new FormData(newVehicleForm);
-                formData.append('customer_id', customerSelect.value);
-
-                try {
-                    fetch('/vehicles', {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                    .getAttribute('content'),
-                                'Accept': 'application/json'
-                            }
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(vehicleData => {
-                            if (vehicleData.success) {
-                                // Add new vehicle to the dropdown
-                                const option = document.createElement('option');
-                                option.value = vehicleData.vehicle.id;
-                                option.textContent =
-                                    `${vehicleData.vehicle.make} ${vehicleData.vehicle.model} (${vehicleData.vehicle.year})`;
-                                vehicleSelect.appendChild(option);
-                                vehicleSelect.value = vehicleData.vehicle.id;
-
-                                // Close modal and reset form
-                                vehicleModal.classList.add('hidden');
-                                newVehicleForm.reset();
-                            } else {
-                                alert('Error creating vehicle: ' + vehicleData.message);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-            });
-
-            // Existing customer change event listener
-            customerSelect.addEventListener('change', function() {
-                var customerId = this.value;
-                document.getElementById('modal-title').innerText =
-                    `Create A New Vehicle ${this.options[this.selectedIndex].text}`;
-
-                if (customerId) {
-                    fetch(`/get-vehicles?customer_id=${customerId}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
-                            data.forEach(vehicle => {
-                                var option = document.createElement('option');
-                                option.value = vehicle.id;
-                                option.textContent =
-                                    `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
-                                vehicleSelect.appendChild(option);
-                            });
-                            vehicleSelect.disabled = false;
-                        });
-                } else {
-                    vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
-                    vehicleSelect.disabled = true;
-                }
-            });
-
-            // Initialize vehicleSelect as disabled
-            vehicleSelect.disabled = true;
+        // Open modal
+        openVehicleModalBtn.addEventListener('click', () => {
+            vehicleModal.classList.remove('hidden');
         });
-    </script>
+
+        // Close modal
+        closeVehicleModalBtn.addEventListener('click', () => {
+            vehicleModal.classList.add('hidden');
+        });
+
+        // Save new vehicle
+        saveVehicleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const formData = new FormData(newVehicleForm);
+            formData.append('customer_id', customerSelect.value);
+
+            fetch('/vehicles', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(vehicleData => {
+                if (vehicleData.success) {
+                    // Add new vehicle to the dropdown
+                    const option = document.createElement('option');
+                    option.value = vehicleData.vehicle.id;
+                    option.textContent = `${vehicleData.vehicle.make} ${vehicleData.vehicle.model} (${vehicleData.vehicle.year})`;
+                    vehicleSelect.appendChild(option);
+                    vehicleSelect.value = vehicleData.vehicle.id;
+
+                    // Close modal and reset form
+                    vehicleModal.classList.add('hidden');
+                    newVehicleForm.reset();
+                } else {
+                    alert('Vehicle Alert: ' + vehicleData.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Ensure modal closes and form resets in case of error as well
+                vehicleModal.classList.add('hidden');
+                newVehicleForm.reset();
+            });
+        });
+
+        // Existing customer change event listener
+        customerSelect.addEventListener('change', function() {
+            var customerId = this.value;
+            document.getElementById('modal-title').innerText = `Create A New Vehicle ${this.options[this.selectedIndex].text}`;
+
+            if (customerId) {
+                fetch(`/get-vehicles?customer_id=${customerId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
+                        data.forEach(vehicle => {
+                            var option = document.createElement('option');
+                            option.value = vehicle.id;
+                            option.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
+                            vehicleSelect.appendChild(option);
+                        });
+                        vehicleSelect.disabled = false;
+                    });
+            } else {
+                vehicleSelect.innerHTML = '<option value="">Select a vehicle</option>';
+                vehicleSelect.disabled = true;
+            }
+        });
+
+        // Initialize vehicleSelect as disabled
+        vehicleSelect.disabled = true;
+    });
+</script>
+
+
 </x-app-layout>
 
 

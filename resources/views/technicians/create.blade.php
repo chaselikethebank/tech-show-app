@@ -5,9 +5,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-3">
+    <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
+            <div class="flex mt-4 text-indigo-500 no-underline">
+                <a href="{{ route('technicians.index') }}" class="mr-4 text-blue-500  flex items-center">
+                    <span>Back to Technicians</span>
+                    <x-arrow />
+                </a>
+            </div>
 
             @if ($errors->any())
                 <div class="mb-4">
@@ -19,11 +25,12 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('technicians.store') }}">
+            <form method="POST" action="{{ route('technicians.store') }}" class="space-y-6">
                 @csrf
 
                 <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
+                    <label for="name"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}"
                         class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                         required>
@@ -53,8 +60,7 @@
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
-                    <button type="submit"
-                        class="inline-flex items-center px-4 py-2 text-green-300">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 text-green-300">
                         Create Technician
                         <x-arrow :route="'technicians.index'" class="ml-2" />
                     </button>

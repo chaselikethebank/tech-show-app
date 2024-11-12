@@ -16,13 +16,13 @@
     <div class="p-3">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-            <x-link-with-arrow :route="'technicians.create'" class="my-3">
+            <x-link-with-arrow :route="'technicians.create'" class="my-3 ">
                 Create New Technician
             </x-link-with-arrow>
 
             @foreach ($technicians as $technician)
                 <div
-                    class="p-6 mb-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    class="p-6 mb-6   bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex items-center mb-4">
                         <div class="relative flex-shrink-0 w-16 h-16">
                             <!-- Profile Image Placeholder -->
