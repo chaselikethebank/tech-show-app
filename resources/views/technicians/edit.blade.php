@@ -56,11 +56,7 @@
 
                 <div class="flex justify-end">
 
-                    <button type="submit"
-                        class="px-4 py-2  text-green-300">
-                        <div class="flex  ">
-                        Submit Update  <x-arrow /></div>
-                    </button>
+                    
 
                      <button type="submit"
                         class="inline-flex items-center px-4 py-2 text-sm font-medium  text-green-300">

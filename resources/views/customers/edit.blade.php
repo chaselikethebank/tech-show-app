@@ -18,8 +18,8 @@
 
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex mt-4 text-indigo-500 no-underline">
-                <a href="{{ route('customers.index', $customer) }}" class="mr-4 text-blue-500  flex items-center">
-                    <span>Back to Customers</span>
+                <a href="{{ route('customers.show', $customer) }}" class="mr-4 text-blue-500  flex items-center">
+                    <span>Back to Customer</span>
                     <x-arrow />
                 </a>
             </div>

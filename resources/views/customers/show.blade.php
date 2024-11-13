@@ -33,9 +33,8 @@
                         <!-- Status Indicator Circle -->
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div
-                                class="w-16 h-16 rounded-full bg-orange-500 dark:bg-orange-400 opacity-75"
-
-                                {{-- {{ match ($customer->status) {
+                                class="w-16 h-16 rounded-full opacity-75
+                                {{ match ($work->status ?? '') {
                                     'estimate' => 'bg-gray-500',
                                     'sent_estimate' => 'bg-blue-500',
                                     'unassigned' => 'bg-gray-400',
@@ -46,8 +45,8 @@
                                     'edit_request' => 'bg-gray-600',
                                     'sublet' => 'bg-blue-400',
                                     'recall' => 'bg-red-500',
-                                    default => 'bg-gray-300', } }}" --}}
-                                    >
+                                    default => 'bg-gray-300',
+                                } }}">
                             </div>
                         </div>
                         <!-- Profile Image Placeholder -->
@@ -58,6 +57,7 @@
                             </svg>
                         </div>
                     </div>
+
                     <div class="ml-4">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $customer->name }}</h2>
                         <div class="text-blue-500 dark:text-blue-400">

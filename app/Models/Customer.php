@@ -43,4 +43,6 @@ class Customer extends Model
     {
         return $this->hasManyThrough(Work::class, Vehicle::class, 'customer_id', 'vehicle_id');
     }
+
+    
 }

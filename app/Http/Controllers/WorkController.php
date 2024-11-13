@@ -105,7 +105,11 @@ class WorkController extends Controller {
     * Display the specified work.
     */
 
+
     public function show( Work $work ) {
+
+        dd($request->all());
+
         return view( 'works.show', compact( 'work' ) );
     }
 
@@ -172,7 +176,7 @@ class WorkController extends Controller {
 
             $createdVehicle = Vehicle::create($request->all());
             Log::info($createdVehicle->toArray());
-            return response()->json(['success' => true, 'vehicle' => $createdVehicle]);
+            return response()->json(['success' => true, 'vehicle' => $createdVehicle]->with('success', 'Vehicle created successfully.'));
         } catch (\Exception $e) {
             Log::error('Important Alert: ' . $e->getMessage());
             dd($e);
