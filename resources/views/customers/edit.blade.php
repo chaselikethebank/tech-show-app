@@ -19,8 +19,9 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex mt-4 text-indigo-500 no-underline">
                 <a href="{{ route('customers.show', $customer) }}" class="mr-4 text-blue-500  flex items-center">
-                    <span>Back to Customer</span>
                     <x-arrow />
+                    <span>Back to Customer</span>
+
                 </a>
             </div>
 
@@ -150,10 +151,10 @@
 
                     <button type="submit"
                         class="inline-flex items-center px-4 py-2 text-sm font-medium  text-green-300">
-                       {{ __('Update Customer') }} <x-arrow  />
+                        {{ __('Update Customer') }} <x-arrow />
                     </button>
 
-                      {{-- <button type="submit"
+                    {{-- <button type="submit"
                         class="inline-flex items-center   ">
                         <x-link-with-arrow :route="'customers.index'" class="my-3">
                              {{ __('Update Customer') }}

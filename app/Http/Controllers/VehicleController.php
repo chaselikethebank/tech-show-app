@@ -37,6 +37,8 @@ class VehicleController extends Controller {
         return view( 'vehicles.show', compact( 'vehicle' ) );
     }
 
+    
+
     /**
     * Show the form for editing the specified vehicle.
     */

@@ -18,8 +18,9 @@
 
             <div class="flex mt-4 text-indigo-500 no-underline ">
                 <a href="{{ route('customers.index', $customer) }}" class="mr-4 text-blue-500  flex items-center">
-                    <span>Back to Customers</span>
                     <x-arrow />
+                    <span>Back to All Customers</span>
+
                 </a>
             </div>
 
@@ -97,16 +98,33 @@
 
                 <!-- Action Links -->
                 <div class="flex mt-4 text-indigo-500 no-underline">
-
-                    <a href="{{ route('customers.edit', $customer) }}" class="text-green-300 ">
-                        <div class="flex">
-                            Edit <x-arrow /></div>
-                </div></a>
+                    <a href="{{ route('customers.edit', $customer) }}" class="text-green-300 flex">
+                        Edit
+                        <x-arrow />
+                    </a>
+                </div>
 
 
 
             </div>
+            <!-- Vehicles -->
+            <!-- Vehicles -->
+            <div class="">
+                <span class="flex">
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">{{ $customer->name }}'s
+                        Vehicles
+                    <button type="button" id="openVehicleModal"
+                        class="px-2 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        + Create New Vehicle +
+                    </button>
+                    </h2>
+                </span>
+                @foreach ($vehicles as $vehicle)
+                    <x-vehicle :vehicle="$vehicle" />
+                @endforeach
+            </div>
         </div>
+
     </div>
 
 </x-app-layout>

@@ -61,6 +61,7 @@
                                             {{ !$customers->isEmpty() ? '' : 'hidden' }}>
                                             + Create New Vehicle +
                                         </button>
+                                     
                                     </label>
                                     <select name="vehicle" id="vehicle"
                                         class="block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white">

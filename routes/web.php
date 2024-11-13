@@ -64,5 +64,7 @@ Route::middleware([
 
     // Vehicles
     Route::post('/vehicles', [VehicleController::class, 'store']);
+    Route::get('/vehicles/{vehicle}', 'VehicleController@show')->name('vehicles.show');
+
 
 });
