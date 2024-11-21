@@ -82,9 +82,9 @@
                         Assign Technician
                     </x-link-with-arrow>
                 @elseif ($work->status === 'edit_request')
-                    <x-link-with-arrow :route="'edit.estimate'" class="mt-2">
+                    {{-- <x-link-with-arrow :route="'edit.estimate'" class="mt-2">
                         Edit Estimate
-                    </x-link-with-arrow>
+                    </x-link-with-arrow> --}}
                 @endif
                 </p>
             @endforeach
