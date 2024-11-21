@@ -10,12 +10,11 @@ class WorkSeeder extends Seeder
 {
     public function run()
     {
-        // Seed data with valid customer and vehicle IDs
         $works = [
             [
-                'customer_id' => 1, // Naval Ravikant
-                'vehicle_id' => 1,  // Porsche 911 (1986) - Red
-                'technician_id' => 1, // Ensure this ID exists in your technicians table
+                'customer_id' => 1,
+                'vehicle_id' => 1,
+                'technician_id' => 1,
                 'description' => 'Routine maintenance',
                 'status' => 'completed',
                 'estimated_cost' => 100,
@@ -24,12 +23,11 @@ class WorkSeeder extends Seeder
                 'started_at' => now(),
                 'completed_at' => now(),
                 'notes' => 'Completed ahead of schedule.',
-                // Add more fields if necessary
             ],
             [
-                'customer_id' => 2, // Elon Musk
-                'vehicle_id' => 4,  // Bugatti Veyron (2014) - Blue
-                'technician_id' => 2, // Ensure this ID exists in your technicians table
+                'customer_id' => 2,
+                'vehicle_id' => 4,
+                'technician_id' => 2,
                 'description' => 'Engine check-up',
                 'status' => 'inProgress',
                 'estimated_cost' => 200,
@@ -38,12 +36,11 @@ class WorkSeeder extends Seeder
                 'started_at' => now(),
                 'completed_at' => null,
                 'notes' => 'Waiting for parts.',
-                // Add more fields if necessary
             ],
             [
-                'customer_id' => 3, // Marie Forleo
-                'vehicle_id' => 5,  // Mercedes-Benz 280SL (1969) - Black
-                'technician_id' => 2, // Ensure this ID exists in your technicians table
+                'customer_id' => 3,
+                'vehicle_id' => 5,
+                'technician_id' => 2,
                 'description' => 'Body repair',
                 'status' => 'pending',
                 'estimated_cost' => 300,
@@ -52,7 +49,97 @@ class WorkSeeder extends Seeder
                 'started_at' => null,
                 'completed_at' => null,
                 'notes' => 'Pending approval from customer.',
-                // Add more fields if necessary
+            ],
+            [
+                'customer_id' => 4,
+                'vehicle_id' => 14,
+                'technician_id' => 1,
+                'description' => 'Oil change',
+                'status' => 'completed',
+                'estimated_cost' => 50,
+                'final_cost' => 45,
+                'scheduled_at' => now(),
+                'started_at' => now(),
+                'completed_at' => now(),
+                'notes' => 'Completed on time.',
+            ],
+            [
+                'customer_id' => 5,
+                'vehicle_id' => 18,
+                'technician_id' => 2,
+                'description' => 'Tire rotation',
+                'status' => 'inProgress',
+                'estimated_cost' => 75,
+                'final_cost' => 70,
+                'scheduled_at' => now(),
+                'started_at' => now(),
+                'completed_at' => null,
+                'notes' => 'In progress.',
+            ],
+            [
+                'customer_id' => 6,
+                'vehicle_id' => 22,
+                'technician_id' => 1,
+                'description' => 'Brake pads replacement',
+                'status' => 'pending',
+                'estimated_cost' => 150,
+                'final_cost' => null,
+                'scheduled_at' => now(),
+                'started_at' => null,
+                'completed_at' => null,
+                'notes' => 'Pending approval.',
+            ],
+            [
+                'customer_id' => 7,
+                'vehicle_id' => 25,
+                'technician_id' => 2,
+                'description' => 'Battery replacement',
+                'status' => 'completed',
+                'estimated_cost' => 100,
+                'final_cost' => 95,
+                'scheduled_at' => now(),
+                'started_at' => now(),
+                'completed_at' => now(),
+                'notes' => 'Completed successfully.',
+            ],
+            [
+                'customer_id' => 8,
+                'vehicle_id' => 28,
+                'technician_id' => 1,
+                'description' => 'Air filter replacement',
+                'status' => 'inProgress',
+                'estimated_cost' => 25,
+                'final_cost' => 20,
+                'scheduled_at' => now(),
+                'started_at' => now(),
+                'completed_at' => null,
+                'notes' => 'In progress.',
+            ],
+            [
+                'customer_id' => 9,
+                'vehicle_id' => 29,
+                'technician_id' => 2,
+                'description' => 'Spark plug replacement',
+                'status' => 'pending',
+                'estimated_cost' => 120,
+                'final_cost' => null,
+                'scheduled_at' => now(),
+                'started_at' => null,
+                'completed_at' => null,
+                'notes' => 'Pending approval.',
+            ],
+            [
+                'customer_id' => 10,
+                'vehicle_id' => 15,
+                'technician_id' => 1,
+                'description' => 'Transmission flush',
+                'status' => 'completed',
+                'estimated_cost' => 80,
+                'final_cost' => 75,
+                'scheduled_at' => now(),
+                'started_at' => now(),
+                'completed_at' => now(),
+                'notes' => 'Completed on schedule.',
             ],
         ];
 
