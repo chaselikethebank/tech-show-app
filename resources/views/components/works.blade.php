@@ -15,7 +15,7 @@
                     <polygon points="12,2 2,22 22,22" />
                 </svg>
                 <h2 class="text-xl font-semibold text-gray-900 ms-3 dark:text-white">
-                    <a href="https://laracasts.com">Estimates</a>
+                    <a href=" ">Estimates</a>
                 </h2>
             </div>
             @foreach ($works as $work)

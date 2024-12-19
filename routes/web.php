@@ -23,6 +23,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // entrry point
+    Route::get('/', function () {return view('welcome');});
+
     // Todos
     Route::prefix('todos')->group(function () {
         Route::get('/', [TodosController::class, 'index'])->name('todos.index');
@@ -63,8 +66,8 @@ Route::middleware([
     Route::resource('technicians', TechniciansController::class);
 
     // Vehicles
-    Route::post('/vehicles', [VehicleController::class, 'store']);
-    Route::get('/vehicles/{vehicle}', 'VehicleController@show')->name('vehicles.show');
+    // Route::post('/vehicles', [VehicleController::class, 'store']);
+    // Route::get('/vehicles/{vehicle}', 'VehicleController@show')->name('vehicles.show');
 
 
 });
