@@ -14,7 +14,7 @@ class AddNameToTechsTable extends Migration
     public function up()
     {
         Schema::table('techs', function (Blueprint $table) {
-            $table->string('name')->after('id');
+            // $table->string('name')->after('id');
         });
     }
 
@@ -26,7 +26,7 @@ class AddNameToTechsTable extends Migration
     public function down()
     {
         Schema::table('techs', function (Blueprint $table) {
-            $table->dropColumn('name');
+            // $table->dropColumn('name');
         });
     }
 }

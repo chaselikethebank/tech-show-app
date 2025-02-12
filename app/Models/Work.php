@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Work extends Model
-{
+class Work extends Model {
     use HasFactory;
 
     protected $fillable = [
         'customer_id',
         'vehicle_id',
-        'technician_id',
         'license_plate',
         'contact_number',
         'email',
@@ -46,35 +44,36 @@ class Work extends Model
         'customer_approval_with_signature',
     ];
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
+    public function customer() {
+        return $this->belongsTo( Customer::class );
     }
 
-    public function vehicle()
-    {
-        return $this->belongsTo(Vehicle::class);
+    public function vehicle() {
+        return $this->belongsTo( Vehicle::class );
     }
 
-    public function technician()
-    {
-        return $this->belongsTo(Technician::class, 'technician_id');
+    public function technicians() {
+        return $this->belongsToMany( Technician::class, 'technician_work', 'work_id', 'technician_id' );
     }
 
-    public function getStatusColor()
-{
-    return match ($this->status) {
-        'estimate' => 'bg-gray-500',
-        'sent_estimate' => 'bg-blue-500',
-        'unassigned' => 'bg-gray-400',
-        'assigned' => 'bg-yellow-500',
-        'inProgress' => 'bg-yellow-400',
-        'pending' => 'bg-orange-500',
-        'done' => 'bg-green-500',
-        'edit_request' => 'bg-gray-600',
-        'sublet' => 'bg-blue-400',
-        'recall' => 'bg-red-500',
-        default => 'bg-gray-300',
-    };
-}
+    public function tasks() {
+        return $this->hasMany( Task::class );
+    }
+
+    public function getStatusColor() {
+        return match ( $this->status ) {
+            'estimate' => 'bg-gray-500',
+            'sent_estimate' => 'bg-blue-500',
+            'unassigned' => 'bg-gray-400',
+            'assigned' => 'bg-yellow-500',
+            'inProgress' => 'bg-yellow-400',
+            'pending' => 'bg-orange-500',
+            'done' => 'bg-green-500',
+            'edit_request' => 'bg-gray-600',
+            'sublet' => 'bg-blue-400',
+            'recall' => 'bg-red-500',
+            default => 'bg-gray-300',
+        }
+        ;
+    }
 }

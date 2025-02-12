@@ -7,16 +7,18 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Jetstream\HasApiTokens;
 
-class Technician extends User
-{
+class Technician extends User {
     use HasFactory, HasProfilePhoto, HasTeams;
 
-    protected $with = ['works'];
-    protected $fillable = ['name', 'email', 'phone', 'notes'];
+    protected $with = [ 'works' ];
+    protected $fillable = [ 'name', 'email', 'phone', 'notes' ];
     protected $table = 'technicians';
 
-    public function works()
-    {
-        return $this->hasMany(Work::class, 'technician_id');
+    public function works() {
+        return $this->belongsToMany( Work::class, 'technician_work' );
+    }
+
+    public function tasks() {
+        return $this->belongsToMany(Task::class, 'task_technician');
     }
 }
