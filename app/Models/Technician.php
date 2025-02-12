@@ -7,25 +7,14 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Jetstream\HasApiTokens;
 
-class Tech extends User
+class Technician extends User
 {
-    // use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use HasTeams;
+    use HasFactory, HasProfilePhoto, HasTeams;
 
-    /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
     protected $with = ['works'];
     protected $fillable = ['name', 'email', 'phone', 'notes'];
-    protected $table = 'techs';
+    protected $table = 'technicians';
 
-    /**
-     * Get all of the works for the tech.
-     */
     public function works()
     {
         return $this->hasMany(Work::class, 'technician_id');

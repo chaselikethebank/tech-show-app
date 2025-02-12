@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tech;
+use App\Models\Technician;
 use Illuminate\Http\Request;
 
 class TechniciansController extends Controller
 {
     public function index()
     {
-        $technicians = Tech::all();
+        $technicians = Technician::all();
         return view('technicians.index', compact('technicians'));
     }
 
@@ -22,17 +22,17 @@ class TechniciansController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:techs,email',
+            'email' => 'nullable|email|unique:technicians,email',
             'phone' => 'nullable|string|max:20',
             'notes' => 'nullable|string',
         ]);
 
-        Tech::create($data);
+        Technician::create($data);
 
         return redirect()->route('technicians.index')->with('success', 'Technician created successfully.');
     }
 
-    public function update(Request $request, Tech $technician)
+    public function update(Request $request, Technician $technician)
     {
 
         // dd($request->all());
@@ -61,7 +61,7 @@ class TechniciansController extends Controller
         return view('technicians.edit', compact('technician'));
     }
 
-    public function destroy(Tech $technician)
+    public function destroy(Techncician $technician)
     {
         $technician->delete();
 

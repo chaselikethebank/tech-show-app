@@ -117,7 +117,7 @@
                     </p>
                     <!-- Display Technician's Name -->
                     <a href="/" class="ml-6 text-gray-500 text-based dark:text-gray-400">Tech:
-                        {{ $work->tech->name ?? 'Unknown' }}</a>
+                        {{ $work->technician->name ?? 'Unknown' }}</a>
                     <br />
                     <x-link-with-arrow class="ml-6" :route="'parts.create'">
                         Create invoice

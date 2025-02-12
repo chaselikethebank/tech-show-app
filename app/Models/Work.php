@@ -56,8 +56,25 @@ class Work extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
-    public function tech()
+    public function technician()
     {
-        return $this->belongsTo(Tech::class, 'technician_id');
+        return $this->belongsTo(Technician::class, 'technician_id');
     }
+
+    public function getStatusColor()
+{
+    return match ($this->status) {
+        'estimate' => 'bg-gray-500',
+        'sent_estimate' => 'bg-blue-500',
+        'unassigned' => 'bg-gray-400',
+        'assigned' => 'bg-yellow-500',
+        'inProgress' => 'bg-yellow-400',
+        'pending' => 'bg-orange-500',
+        'done' => 'bg-green-500',
+        'edit_request' => 'bg-gray-600',
+        'sublet' => 'bg-blue-400',
+        'recall' => 'bg-red-500',
+        default => 'bg-gray-300',
+    };
+}
 }

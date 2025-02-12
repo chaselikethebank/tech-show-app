@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use App\Models\Tech;
+use App\Models\Technician;
 use App\Models\Vehicle;
 use App\Models\Work;
 use Illuminate\Http\Request;
@@ -13,13 +13,13 @@ class WorkController extends Controller {
     * Display a listing of the works.
     */
 
-    public function index() {
-        $works = Work::all();
-        $technicians = Tech::all();
-        $vehicles = Vehicle::all();
-
-        return view( 'components.works', compact( 'works', 'technicians', 'vehicles' ) );
-    }
+    public function index()
+{
+    $works = Work::all();
+    $technicians = Technician::all();
+    $vehicles = Vehicle::all();
+    return view('works.index', compact('works', 'technicians', 'vehicles'));
+}
 
     /**
     * Show the form for creating a new work.
@@ -28,7 +28,7 @@ class WorkController extends Controller {
     public function create() {
         $customers = Customer::all();
         $works = Work::all();
-        $technicians = Tech::all();
+        $technicians = Technician::all();
         $vehicles = Vehicle::all();
         $statuses = config( 'status.statuses' );
 
@@ -62,7 +62,7 @@ class WorkController extends Controller {
         $validated = $request->validate( [
             'customer_id' => 'required|integer|exists:customers,id',
             'vehicle_id' => 'required|integer|exists:vehicles,id',
-            'technician_id' => 'required|integer|exists:techs,id',
+            'technician_id' => 'required|integer|exists:technicians,id',
             'license_plate' => 'nullable|string',
             'contact_number' => 'nullable|string',
             'email' => 'nullable|email',

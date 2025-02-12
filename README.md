@@ -106,3 +106,10 @@ php artisan make:component Name
 
 create both the component controller 
 and the view file 
+
+
+change a model name etc: 
+php artisan config:clear
+php artisan cache:clear
+php artisan optimize:clear
+

@@ -11,7 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TechniciansController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\WorksController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'auth:sanctum',
@@ -45,7 +45,9 @@ Route::middleware([
 
     // Works Routes
     Route::prefix('works')->group(function () {
+
         Route::get('/', [WorkController::class, 'index'])->name('works.index');
+
         Route::get('/create', [WorkController::class, 'create'])->name('works.create');
         Route::post('/', [WorkController::class, 'store'])->name('works.store');
         Route::post('/assign-technician/{id}', [WorkController::class, 'assignTechnician'])->name('assign.technician');
